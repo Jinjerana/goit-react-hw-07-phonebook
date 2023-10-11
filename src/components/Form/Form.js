@@ -30,21 +30,21 @@ const Forma = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values, actions) => {
-    const { name, phone } = values;
+    const { name, number } = values;
     const isSameContact = contacts.some(
       contact =>
         contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.phone === phone
+        contact.number === number
     );
 
     if (isSameContact) {
-      alert(`${name} or ${phone}: is already in contacts`);
+      alert(`${name} or ${number}: is already in contacts`);
       actions.resetForm();
 
       return;
     }
 
-    dispatch(addContact(name, phone));
+    dispatch(addContact(name, number));
     actions.resetForm();
   };
 
@@ -53,7 +53,7 @@ const Forma = () => {
       <Formik
         initialValues={{
           name: '',
-          phone: '',
+          number: '',
         }}
         validationSchema={schema}
         onSubmit={onSubmit}
