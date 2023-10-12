@@ -34,7 +34,7 @@ const Forma = () => {
     const isSameContact = contacts.some(
       contact =>
         contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.number === number
+        contact.phone === number
     );
 
     if (isSameContact) {
@@ -44,7 +44,7 @@ const Forma = () => {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, phone: number }));
     actions.resetForm();
   };
 
